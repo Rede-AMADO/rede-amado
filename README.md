@@ -13,19 +13,20 @@ Este é o backend da plataforma **Rede AMADO**, um sistema informativo e interat
 
 ## 📁 Estrutura do Projeto
 
+```bash
 rede_amado/
-├── main.py # Arquivo principal do FastAPI
-├── database.py # Conexão com o banco de dados
-├── models.py # Modelos do banco de dados (SQLAlchemy)
-├── schemas.py # Esquemas de entrada/saída (Pydantic)
+├── main.py
+├── database.py
+├── models.py
+├── schemas.py
 └── routers/
-    ├── atendimento.py # Rotas de atendimento
-    ├── usuario.py # Rotas de usuários
-    ├── produto.py # Rotas da loja
-    ├── blog.py # Rotas de blog/eventos
-    ├── servico.py # Rotas de serviços
-    └── contato.py # Rotas de contato
-
+    ├── atendimento.py
+    ├── usuario.py
+    ├── produto.py
+    ├── blog.py
+    ├── servico.py
+    └── contato.py
+```
 
 ## 🧪 Como executar o projeto
 
@@ -51,7 +52,7 @@ pip install -r requirements.txt
 ```bash
 uvicorn backend.main:app --reload
 ```
-Acesse em: ´http://127.0.0.1:8000´
+Acesse em: `http://127.0.0.1:8000`
 
 ### 5. Documentação automática
 
