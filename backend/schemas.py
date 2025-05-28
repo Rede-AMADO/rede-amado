@@ -1,13 +1,15 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import Optional, Literal
 
 
 # === ATENDIMENTO ===
 class AtendimentoBase(BaseModel):
     nome: str
     email: EmailStr
-    tipo: str
-    mensagem: str
+    telefone: str
+    descricao: str
+    area: Literal["Juridico", "Saude", "Psicologico"]
+    tipo: Literal["Online", "Presencial"]
 
 class AtendimentoCreate(AtendimentoBase):
     pass
@@ -23,7 +25,8 @@ class Atendimento(AtendimentoBase):
 class UsuarioBase(BaseModel):
     nome: str
     email: EmailStr
-    tipo: str  # Ex: "voluntário", "público", etc.
+    senha: str
+    tipo: Literal["Voluntario", "Usuario"]
 
 class UsuarioCreate(UsuarioBase):
     pass
@@ -41,7 +44,6 @@ class LojaBase(BaseModel):
     descricao: str
     preco: float
     categoria: str
-    imagem: Optional[str]
 
 class LojaCreate(LojaBase):
     pass
@@ -57,6 +59,7 @@ class Loja(LojaBase):
 class BlogPostBase(BaseModel):
     titulo: str
     conteudo: str
+    data_publicacao: Optional[str] = None 
 
 class BlogPostCreate(BlogPostBase):
     pass
@@ -78,21 +81,6 @@ class ContatoCreate(ContatoBase):
     pass
 
 class Contato(ContatoBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-# === SERVIÇO (jurídico, psicológico, saúde...) ===
-class ServicoBase(BaseModel):
-    nome: str
-    descricao: str
-
-class ServicoCreate(ServicoBase):
-    pass
-
-class Servico(ServicoBase):
     id: int
 
     class Config:

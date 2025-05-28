@@ -11,7 +11,7 @@ def criar(at: schemas.AtendimentoCreate, db: Session = Depends(database.get_db))
     db.commit()
     db.refresh(novo)
     return novo
-
+ 
 @router.get("/")
 def listar(db: Session = Depends(database.get_db)):
     return db.query(models.Atendimento).all()
