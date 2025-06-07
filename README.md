@@ -35,7 +35,7 @@ rede_amado/
 │       ├── servico.py
 │       └── contato.py
 ├── frontend/
-│   └── assets/
+│   ├── assets/
 │   │   ├── logo.png
 │   │   ├── news1.png
 │   │   ├── news2.jpg
