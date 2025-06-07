@@ -16,9 +16,9 @@ def criar(usuario: schemas.UsuarioCreate, db: Session = Depends(database.get_db)
 def listar(db: Session = Depends(database.get_db)):
     return db.query(models.Usuario).all()
 
-@router.get("/{id}")
-def buscar(id: int, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Usuario).get(id)
+@router.get("/email/{email}")
+def buscar_por_email(email: str, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Usuario).filter(models.Usuario.email == email).first()
     if not registro:
         raise HTTPException(404, "Usuário não encontrado")
     return registro
