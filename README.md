@@ -1,6 +1,6 @@
-# 🌐 Rede AMADO - Backend com FastAPI
+# 🌐 Rede AMADO - Plataforma Web Interativa
 
-Este é o backend da plataforma **Rede AMADO**, um sistema informativo e interativo com foco em atendimentos, serviços, blog, loja e contatos, desenvolvido com **FastAPI** e **SQLite**.
+Este é o repositório do projeto **Rede AMADO**, um sistema informativo e interativo com foco em atendimentos, serviços, blog, loja e contatos. A aplicação é dividida em duas partes: **Backend (FastAPI + SQLite)** e **Frontend (Vite + JavaScript/TypeScript)**.
 
 ## 🚀 Tecnologias utilizadas
 
