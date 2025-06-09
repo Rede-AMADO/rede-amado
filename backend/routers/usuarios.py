@@ -16,16 +16,16 @@ def criar(usuario: schemas.UsuarioCreate, db: Session = Depends(database.get_db)
 def listar(db: Session = Depends(database.get_db)):
     return db.query(models.Usuario).all()
 
-@router.get("/email/{email}")
+@router.get("/{email}")
 def buscar_por_email(email: str, db: Session = Depends(database.get_db)):
     registro = db.query(models.Usuario).filter(models.Usuario.email == email).first()
     if not registro:
         raise HTTPException(404, "Usuário não encontrado")
     return registro
 
-@router.put("/{id}")
-def atualizar(id: int, dados: schemas.UsuarioCreate, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Usuario).get(id)
+@router.put("/{email}")
+def atualizar(email: str, dados: schemas.UsuarioCreate, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Usuario).filter(models.Usuario.email == email).first()
     if not registro:
         raise HTTPException(404, "Usuário não encontrado")
     for k, v in dados.dict().items():
@@ -34,9 +34,9 @@ def atualizar(id: int, dados: schemas.UsuarioCreate, db: Session = Depends(datab
     db.refresh(registro)
     return registro
 
-@router.delete("/{id}")
-def deletar(id: int, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Usuario).get(id)
+@router.delete("/{email}")
+def deletar(email: str, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Usuario).filter(models.Usuario.email == email).first()
     if not registro:
         raise HTTPException(404, "Usuário não encontrado")
     db.delete(registro)

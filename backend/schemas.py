@@ -37,40 +37,6 @@ class Usuario(UsuarioBase):
     class Config:
         orm_mode = True
 
-
-# === PRODUTO (Loja) ===
-class LojaBase(BaseModel):
-    nome: str
-    descricao: str
-    preco: float
-    categoria: str
-
-class LojaCreate(LojaBase):
-    pass
-
-class Loja(LojaBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-# === BLOG / EVENTOS ===
-class BlogPostBase(BaseModel):
-    titulo: str
-    conteudo: str
-    data_publicacao: Optional[str] = None 
-
-class BlogPostCreate(BlogPostBase):
-    pass
-
-class BlogPost(BlogPostBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
 # === CONTATO ===
 class ContatoBase(BaseModel):
     nome: str

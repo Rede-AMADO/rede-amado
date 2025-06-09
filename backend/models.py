@@ -17,30 +17,9 @@ class Usuario(Base):
     tipo = Column(String)
     senha = Column(String, nullable=False)
 
-class Loja(Base):
-    __tablename__ = "produtos"
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String)
-    descricao = Column(Text)
-    preco = Column(String)
-    categoria = Column(String)
-    imagem = Column(String)
-
-class Blog(Base):
-    __tablename__ = "blog"
-    id = Column(Integer, primary_key=True, index=True)
-    titulo = Column(String)
-    conteudo = Column(Text)
-
 class Contato(Base):
     __tablename__ = "contatos"
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String)
     email = Column(String)
     mensagem = Column(Text)
-
-class Servico(Base):
-    __tablename__ = "servicos"
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String)
-    descricao = Column(Text)
