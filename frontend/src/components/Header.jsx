@@ -1,42 +1,18 @@
-import logo from "/assets/logo.png"; // Importe sua logo em /src/assets/logo.png
+import logo from "/assets/logo.png";
+import { useCarrinho } from "../components/CarrinhoContext";
+import CarrinhoModal from "../components/CarrinhoModal";
 
 function Header({ onOpenAuth, isLoggedIn, userEmail }) {
+  const { totalItens, setIsCarrinhoOpen } = useCarrinho();
+
   return (
     <header className="fixed top-0 w-full bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50">
-      {/* 
-        • fixed top-0 w-full: fixa o Header no topo, ocupando toda a largura da tela.
-        • bg-white bg-opacity-90: fundo branco semi‐transparente (90% de opacidade) para
-          deixar à mostra, levemente, o pano de fundo borrado atrás do header.
-        • backdrop-blur-sm: adiciona um leve blur ao fundo do header para separar do conteúdo
-          rolante (suporta navegadores modernos).
-        • shadow-md: sombra média para destacar o header do restante da página.
-        • z-50: posiciona o header acima de outros elementos (importante para manter fixo).
-      */}
       <div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4">
-        {/*
-          • max-w-6xl mx-auto: limita a largura do conteúdo a ~72rem e centraliza horizontalmente.
-          • h-16: altura fixa de 4rem (64px) para dar consistência ao layout.
-          • flex items-center justify-between: cria um container flex, alinhando verticalmente
-            ao centro e espaçando logo à esquerda e menu à direita.
-          • px-4: padding horizontal de 1rem (16px) para folga nas extremidades em telas pequenas.
-        */}
-
-        {/* LOGO + MENU*/}
         <div className="flex items-center">
-          <img
-            src={logo}
-            alt="Logo da Rede"
-            className="h-10 w-auto"
-            // h-10: altura de 2.5rem (40px), w-auto mantém proporção.
-          />
+          <img src={logo} alt="Logo da Rede" className="h-10 w-auto" />
 
-          {/* NAVEGAÇÃO À DIREITA*/}
           <nav className="px-8">
-            <ul className=" flex space-x-8">
-              {/*
-              • flex: cria layout em linha para os itens de menu.
-              • space-x-8: adiciona espaçamento horizontal de 2rem (32px) entre cada <li>.
-            */}
+            <ul className="flex space-x-8">
               <li>
                 <button className="rounded-md bg-slate-400 p-1.5">
                   <a
@@ -74,24 +50,46 @@ function Header({ onOpenAuth, isLoggedIn, userEmail }) {
             </ul>
           </nav>
         </div>
-        {/* NAVEGAÇÃO À ESQUERDA*/}
+
         <nav className="px-8">
-          <ul className=" flex space-x-8">
-            {/*
-              • flex: cria layout em linha para os itens de menu.
-              • space-x-8: adiciona espaçamento horizontal de 2rem (32px) entre cada <li>.
-            */}
+          <ul className="flex items-center space-x-8">
             <li>
               <button>Contate-nos</button>
             </li>
+            {isLoggedIn && (
+              <li>
+                <button 
+                  onClick={() => setIsCarrinhoOpen(true)}
+                  className="relative p-2"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
+                    />
+                  </svg>
+                  {totalItens > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {totalItens}
+                    </span>
+                  )}
+                </button>
+              </li>
+            )}
             <li>
               {isLoggedIn ? (
-                // Se estiver logado, mostra o e-mail como texto simples
                 <span className="text-sm font-medium text-gray-800">
                   {userEmail}
                 </span>
               ) : (
-                // Senão, mostra o botão "Cadastre-se"
                 <button
                   onClick={onOpenAuth}
                   className="text-sm font-medium bg-[var(--color-blue)] hover:bg-[var(--color-purple)] text-white px-4 py-2 rounded-full transition"
@@ -103,6 +101,7 @@ function Header({ onOpenAuth, isLoggedIn, userEmail }) {
           </ul>
         </nav>
       </div>
+      <CarrinhoModal />
     </header>
   );
 }

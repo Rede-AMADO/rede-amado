@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useCarrinho } from "../components/CarrinhoContext";
 
 function ProductSlider() {
+  const { adicionarAoCarrinho } = useCarrinho();
+  
   const produtosPorFiltro = {
     camisetas: [
       {
@@ -80,30 +83,28 @@ function ProductSlider() {
         imagem: "/assets/shop/bandeira4.jpg",
       },
     ],
-    todos: [], // será preenchido com todos os produtos abaixo
+    todos: [],
   };
-  // Preenche automaticamente o filtro “todos”
+
   produtosPorFiltro.todos = [
     ...produtosPorFiltro.camisetas,
     ...produtosPorFiltro.acessorios,
     ...produtosPorFiltro.bandeiras,
   ];
-  const [filtroSelecionado, setFiltroSelecionado] = useState("todos");
 
+  const [filtroSelecionado, setFiltroSelecionado] = useState("todos");
   const produtos = produtosPorFiltro[filtroSelecionado];
 
   return (
     <section id="produtos" className="py-16">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        {/* Título e Slogan */}
         <h2 className="text-4xl font-semibold text-white mb-4">LOJA AMADO</h2>
         <p className="text-lg text-slate-300 mb-8">
           Orgulho que se veste, apoia e transforma
         </p>
 
-        {/* Filtros */}
         <div className="flex justify-center gap-14 flex-wrap mb-10">
-          {["camisetas", "acessorios", "bandeiras"].map((filtro) => (
+          {["todos", "camisetas", "acessorios", "bandeiras"].map((filtro) => (
             <button
               key={filtro}
               onClick={() => setFiltroSelecionado(filtro)}
@@ -114,12 +115,11 @@ function ProductSlider() {
                     : "bg-transparent border-rose-400 text-white hover:bg-white hover:text-gray-900"
                 }`}
             >
-              {filtro.charAt(0).toUpperCase() + filtro.slice(1)}
+              {filtro === "todos" ? "Todos" : filtro.charAt(0).toUpperCase() + filtro.slice(1)}
             </button>
           ))}
         </div>
 
-        {/* Grid de Produtos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {produtos.map((produto) => (
             <div
@@ -136,7 +136,10 @@ function ProductSlider() {
                   {produto.nome}
                 </h3>
                 <p className="text-sm text-gray-600 mb-2">{produto.preco}</p>
-                <button className="mt-2 w-full py-2 bg-[var(--color-blue)] text-white rounded-full hover:bg-[var(--color-purple)] transition">
+                <button 
+                  onClick={() => adicionarAoCarrinho(produto)}
+                  className="mt-2 w-full py-2 bg-[var(--color-blue)] text-white rounded-full hover:bg-[var(--color-purple)] transition"
+                >
                   Adicionar ao Carrinho
                 </button>
               </div>
