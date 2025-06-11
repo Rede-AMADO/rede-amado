@@ -1,8 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, Literal
 
-
-# === ATENDIMENTO ===
 class AtendimentoBase(BaseModel):
     nome: str
     email: EmailStr
@@ -20,8 +18,6 @@ class Atendimento(AtendimentoBase):
     class Config:
         orm_mode = True
 
-
-# === USUÁRIO / VOLUNTÁRIO ===
 class UsuarioBase(BaseModel):
     nome: str
     email: EmailStr
@@ -37,7 +33,6 @@ class Usuario(UsuarioBase):
     class Config:
         orm_mode = True
 
-# === CONTATO ===
 class ContatoBase(BaseModel):
     nome: str
     email: EmailStr
