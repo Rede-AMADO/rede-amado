@@ -76,7 +76,6 @@ rede_amado/
 ### 1. Clone o repositório
 ```bash
 git clone https://github.com/Rede-AMADO/rede_amado.git
-cd rede_amado/backend
 ``` 
 
 ### 2. Crie e ative um ambiente virtual
