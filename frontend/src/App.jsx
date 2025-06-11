@@ -10,67 +10,67 @@ import Auth from "./components/Auth";
 import CarrinhoModal from "./components/CarrinhoModal";
 
 function App() {
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
+	const [isAuthOpen, setIsAuthOpen] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [userEmail, setUserEmail] = useState("");
 
-  const handleAuthSuccess = (email) => {
-    setIsLoggedIn(true);
-    setUserEmail(email);
-    setIsAuthOpen(false);
-  };
+	const handleAuthSuccess = (email) => {
+		setIsLoggedIn(true);
+		setUserEmail(email);
+		setIsAuthOpen(false);
+	};
 
-  return (
-    <CarrinhoProvider>
-      <div className="flex flex-col min-h-screen">
-        <Header
-          onOpenAuth={() => setIsAuthOpen(true)}
-          isLoggedIn={isLoggedIn}
-          userEmail={userEmail}
-        />
+	return (
+		<CarrinhoProvider>
+			<div className="flex flex-col min-h-screen">
+				<Header
+					onOpenAuth={() => setIsAuthOpen(true)}
+					isLoggedIn={isLoggedIn}
+					userEmail={userEmail}
+				/>
 
-        <main className="flex-1 mt-16 mb-16">
-          <section id="noticias-slider" className="py-12">
-            <div className="max-w-6xl mx-auto px-4">
-              <NewsSlider />
-            </div>
-          </section>
+				<main className="flex-1 mt-16 mb-16">
+					<section id="noticias-slider" className="py-12">
+						<div className="max-w-6xl mx-auto px-4">
+							<NewsSlider />
+						</div>
+					</section>
 
-          <section id="product-slider" className="py-12">
-            <div className="max-w-6xl mx-auto px-4">
-              <ProductSlider />
-            </div>
-          </section>
+					<section id="product-slider" className="py-12">
+						<div className="max-w-6xl mx-auto px-4">
+							<ProductSlider />
+						</div>
+					</section>
 
-          <section id="service" className="py-12">
-            <div className="max-w-6xl mx-auto px-4">
-              <Services
-                isLoggedIn={isLoggedIn}
-                onOpenAuth={() => setIsAuthOpen(true)}
-              />
-            </div>
-          </section>
+					<section id="service" className="py-12">
+						<div className="max-w-6xl mx-auto px-4">
+							<Services
+								isLoggedIn={isLoggedIn}
+								onOpenAuth={() => setIsAuthOpen(true)}
+							/>
+						</div>
+					</section>
 
-          <section id="equipe" className="py-12">
-            <div className="max-w-6xl mx-auto px-4">
-              <h2 className="text-5xl font-semibold text-white mb-6">
-                Sobre a Equipe
-              </h2>
-              <AboutTeam />
-            </div>
-          </section>
-        </main>
+					<section id="equipe" className="py-12">
+						<div className="max-w-6xl mx-auto px-4">
+							<h2 className="text-5xl font-semibold text-white mb-6">
+								Sobre a Equipe
+							</h2>
+							<AboutTeam />
+						</div>
+					</section>
+				</main>
 
-        <Footer />
-        <Auth
-          isOpen={isAuthOpen}
-          onClose={() => setIsAuthOpen(false)}
-          onAuthSuccess={handleAuthSuccess}
-        />
-        <CarrinhoModal />
-      </div>
-    </CarrinhoProvider>
-  );
+				<Footer />
+				<Auth
+					isOpen={isAuthOpen}
+					onClose={() => setIsAuthOpen(false)}
+					onAuthSuccess={handleAuthSuccess}
+				/>
+				<CarrinhoModal />
+			</div>
+		</CarrinhoProvider>
+	);
 }
 
 export default App;
