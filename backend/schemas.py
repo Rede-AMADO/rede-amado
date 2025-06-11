@@ -2,12 +2,8 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional, Literal
 
 class AtendimentoBase(BaseModel):
-    nome: str
     email: EmailStr
-    telefone: str
-    descricao: str
-    area: Literal["Juridico", "Saude", "Psicologico"]
-    tipo: Literal["Online", "Presencial"]
+    servico: Literal["Consultoria Acadêmica", "Design Gráfico", "Oficinas de Inclusão"]
 
 class AtendimentoCreate(AtendimentoBase):
     pass

@@ -4,10 +4,8 @@ from .database import Base
 class Atendimento(Base):
     __tablename__ = "atendimentos"
     id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String)
-    email = Column(String)
-    tipo = Column(String)
-    mensagem = Column(Text)
+    email = Column(String, index=True)
+    servico = Column(String, nullable=False)
 
 class Usuario(Base):
     __tablename__ = "usuarios"

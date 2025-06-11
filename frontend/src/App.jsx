@@ -47,6 +47,7 @@ function App() {
 							<Services
 								isLoggedIn={isLoggedIn}
 								onOpenAuth={() => setIsAuthOpen(true)}
+								userEmail={userEmail}
 							/>
 						</div>
 					</section>
