@@ -6,11 +6,13 @@ function AboutTeam() {
 			}`}
 		>
 			<div className="md:w-1/2">
-				<img
-					src={imagem}
-					alt={titulo}
-					className="w-full h-64 object-cover rounded-xl shadow-lg"
-				/>
+				<div className="bg-white p-2 rounded-xl shadow-lg h-64 flex items-center justify-center">
+					<img
+						src={imagem}
+						alt={titulo}
+						className="max-h-full object-contain"
+					/>
+				</div>
 			</div>
 			<div className="md:w-1/2 text-white">
 				<h3 className="text-3xl font-bold mb-4">{titulo}</h3>

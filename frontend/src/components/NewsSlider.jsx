@@ -7,35 +7,35 @@ function NewsSlider() {
 			image: "/assets/news1.png",
 			title: "Evento de Inclusão Universitária",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.",
+				"Reunimos estudantes, professores e ativistas para debater práticas inclusivas no ambiente acadêmico.",
 		},
 		{
 			id: 2,
 			image: "/assets/news2.jpg",
 			title: "Palestra sobre Direitos LGBTQIAPN+",
 			description:
-				"Cras suscipit, quam vitae luctus fermentum, urna nunc suscipit urna, sed aliquet lectus nunc nec urna.",
+				"Especialistas compartilharam avanços e desafios enfrentados pela comunidade dentro e fora da universidade.",
 		},
 		{
 			id: 3,
 			image: "/assets/news3.png",
 			title: "Oficina de Expressão Artística",
 			description:
-				"Suspendisse potenti. Nulla facilisi. Quisque sit amet est et sapien ullamcorper pharetra.",
+				"Participantes exploraram sua criatividade por meio da arte como forma de representatividade e resistência.",
 		},
 		{
 			id: 4,
-			image: "/assets/news4.png",
+			image: "/assets/news4.jpg",
 			title: "Campanha de Conscientização",
 			description:
-				"Proin facilisis lorem at quam laoreet, sit amet gravida orci bibendum. Integer sit amet est ac elit.",
+				"Lançamos ações visuais e interativas no campus para fortalecer o respeito à diversidade.",
 		},
 		{
 			id: 5,
-			image: "/assets/news5.png",
+			image: "/assets/news5.jpg",
 			title: "Concurso Cultural Universitário",
 			description:
-				"Morbi commodo sem nec turpis convallis, id vehicula nisl luctus. Donec vel semper risus.",
+				"Estudantes apresentaram projetos sobre inclusão e diversidade, destacando talentos da comunidade.",
 		},
 	]);
 
@@ -55,38 +55,34 @@ function NewsSlider() {
 	};
 
 	return (
-		<section
-			id="noticias-slider"
-			className="py-30 bg-opacity-20"
-		>
-			<div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
-				<div className="md:w-1/2 mb-8 md:mb-0">
-					<h3 className="text-4xl font-semibold text-white mb-4">
-						{currentNews.title}
-					</h3>
-					<p className="text-slate-300">{currentNews.description}</p>
+		<section id="noticias-slider" className="py-36">
+			<div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+				<div className="md:w-1/2">
+					<h3 className="text-5xl font-bold text-white mb-6">{currentNews.title}</h3>
+					<p className="text-lg text-slate-300 leading-relaxed">
+						{currentNews.description}
+					</p>
 				</div>
 
 				<div className="md:w-1/2 flex justify-center">
-					<div className="w-80 h-48 rounded-2xl shadow-xl overflow-hidden">
+					<div className="bg-white w-[500px] h-[300px] flex items-center justify-center p-4 rounded-2xl shadow-xl">
 						<img
 							src={currentNews.image}
 							alt={currentNews.title}
-							className="w-full h-full object-cover"
+							className="max-h-full max-w-full object-contain"
 						/>
 					</div>
 				</div>
 			</div>
 
-			<div className="mt-6 flex justify-center space-x-3">
+			<div className="mt-10 flex justify-center space-x-3">
 				{newsItems.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => goToIndex(index)}
-						className={`
-							w-3 h-3 rounded-full transition-colors duration-200
-							${currentIndex === index ? "bg-white" : "bg-gray-400"}
-						`}
+						className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+							currentIndex === index ? "bg-white" : "bg-gray-400"
+						}`}
 						aria-label={`Ir para notícia ${index + 1}`}
 					/>
 				))}
