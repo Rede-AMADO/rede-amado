@@ -16,8 +16,8 @@ Este é o repositório do projeto **Rede AMADO**, um sistema informativo e inter
 ### 🎨 Frontend
 
 - **Vite** — bundler moderno e rápido
-- **JavaScript** - Logica
-- **React** - ??
+- **JavaScript** - lógica e interatividade do frontend
+- **React** - biblioteca para construir interfaces e componentes reutilizáveis
 
 ## 📁 Estrutura do Projeto
 
@@ -31,8 +31,6 @@ rede_amado/
 │   └── routers/
 │       ├── atendimento.py
 │       ├── usuario.py
-│       ├── blog.py
-│       ├── servico.py
 │       └── contato.py
 ├── frontend/
 │   ├── assets/
@@ -48,6 +46,8 @@ rede_amado/
 │       ├── components/
 │       │   ├── AboutTeam.jsx
 │       │   ├── Auth.jsx
+│       │   ├── CarrinhoContext.jsx
+│       │   ├── CarrinhoModal.jsx
 │       │   ├── CartSidebar.jsx
 │       │   ├── ContactForm.jsx
 │       │   ├── Footer.jsx

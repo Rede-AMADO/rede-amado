@@ -16,16 +16,16 @@ def criar(contato: schemas.ContatoCreate, db: Session = Depends(database.get_db)
 def listar(db: Session = Depends(database.get_db)):
     return db.query(models.Contato).all()
 
-@router.get("/{id}")
-def buscar(id: int, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Contato).get(id)
+@router.get("/{email}")
+def buscar(email: str, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Contato).filter(models.Contato.email == email).first()
     if not registro:
         raise HTTPException(404, "Contato não encontrado")
     return registro
 
-@router.put("/{id}")
-def atualizar(id: int, dados: schemas.ContatoCreate, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Contato).get(id)
+@router.put("/{email}")
+def atualizar(email: str, dados: schemas.ContatoCreate, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Contato).filter(models.Contato.email == email).first()
     if not registro:
         raise HTTPException(404, "Contato não encontrado")
     for k, v in dados.dict().items():
@@ -34,9 +34,9 @@ def atualizar(id: int, dados: schemas.ContatoCreate, db: Session = Depends(datab
     db.refresh(registro)
     return registro
 
-@router.delete("/{id}")
-def deletar(id: int, db: Session = Depends(database.get_db)):
-    registro = db.query(models.Contato).get(id)
+@router.delete("/{email}")
+def deletar(email: str, db: Session = Depends(database.get_db)):
+    registro = db.query(models.Contato).filter(models.Contato.email == email).first()
     if not registro:
         raise HTTPException(404, "Contato não encontrado")
     db.delete(registro)
