@@ -33,7 +33,10 @@ rede_amado/
 │       ├── usuario.py
 │       └── contato.py
 ├── frontend/
-│   ├── assets/
+│   ├── public/assets/
+│   │   ├── about/
+│   │   ├── services/
+│   │   ├── shop/
 │   │   ├── logo.png
 │   │   ├── news1.png
 │   │   ├── news2.jpg
