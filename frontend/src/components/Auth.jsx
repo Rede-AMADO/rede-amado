@@ -22,7 +22,7 @@ async function registerUser(userData) {
 
 async function loginUser(email) {
   const encodedEmail = encodeURIComponent(email);
-  const response = await fetch(`${API_BASE_URL}/usuarios/email/${encodedEmail}`, {
+  const response = await fetch(`${API_BASE_URL}/usuarios/${encodedEmail}`, {
     method: 'GET',
     headers: {
       'accept': 'application/json',
