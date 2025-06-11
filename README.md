@@ -124,10 +124,6 @@ Acesse em: `http://localhost:5173`
 ## 📌 Funcionalidades implementadas
 
 - CRUD de Atendimentos
-- CRUD de Contato
-- CRUD de Serviços
-- CRUD de Blog/Eventos
-- CRUD de Loja (Produtos)
 - CRUD de Usuários (Voluntários e Público)
 - Conexão com banco SQLite
 - Frontend moderno e responsivo
