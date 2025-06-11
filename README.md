@@ -1,6 +1,6 @@
 # 🌐 Rede AMADO - Plataforma Web Interativa
 
-Este é o repositório do projeto **Rede AMADO**, um sistema informativo e interativo com foco em atendimentos, serviços, blog, loja e contatos. A aplicação é dividida em duas partes: **Backend (FastAPI + SQLite)** e **Frontend (Vite + JavaScript/TypeScript)**.
+Este é o repositório do projeto **Rede AMADO**, um sistema informativo e interativo com foco em atendimentos, serviço e loja do núcleo AMADO da Unijorge. A aplicação é dividida em duas partes: **Backend (FastAPI + SQLite)** e **Frontend (Vite + JavaScript/TypeScript)**.
 
 ## 🚀 Tecnologias utilizadas
 
