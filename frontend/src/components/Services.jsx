@@ -32,10 +32,7 @@ function Servicos({ isLoggedIn, onOpenAuth }) {
 	};
 
 	return (
-		<section
-			id="servicos"
-			className="py-16 bg-[var(--color-green)] bg-opacity-20"
-		>
+		<section id="servicos" className="py-16">
 			<div className="max-w-6xl mx-auto px-4 text-center">
 				<h2 className="text-4xl font-bold text-white mb-8">Serviços</h2>
 
@@ -43,25 +40,27 @@ function Servicos({ isLoggedIn, onOpenAuth }) {
 					{servicos.map((servico) => (
 						<div
 							key={servico.id}
-							className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
+							className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform flex flex-col justify-between"
 						>
-							<img
-								src={servico.imagem}
-								alt={servico.titulo}
-								className="w-full h-48 object-cover"
-							/>
-							<div className="p-6 text-left">
+							<div className="bg-white h-48 flex items-center justify-center p-2">
+								<img
+									src={servico.imagem}
+									alt={servico.titulo}
+									className="max-h-full object-contain"
+								/>
+							</div>
+							<div className="p-6 text-left flex flex-col flex-grow">
 								<h3 className="text-xl font-semibold text-gray-800 mb-2">
 									{servico.titulo}
 								</h3>
-								<p className="text-gray-600">{servico.descricao}</p>
+								<p className="text-gray-600 flex-grow">{servico.descricao}</p>
+								<button
+									onClick={handleAgendar}
+									className="mt-4 mb-6 bg-[var(--color-blue)] hover:bg-[var(--color-purple)] text-white font-semibold py-3 px-8 rounded-full transition"
+								>
+									Agendar Serviço
+								</button>
 							</div>
-							<button
-								onClick={handleAgendar}
-								className="bg-[var(--color-blue)] hover:bg-[var(--color-purple)] text-white font-semibold py-3 px-8 rounded-full transition"
-							>
-								Agendar Serviço
-							</button>
 						</div>
 					))}
 				</div>

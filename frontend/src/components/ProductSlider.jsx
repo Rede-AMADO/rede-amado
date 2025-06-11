@@ -3,7 +3,7 @@ import { useCarrinho } from "../components/CarrinhoContext";
 
 function ProductSlider() {
 	const { adicionarAoCarrinho } = useCarrinho();
-	
+
 	const produtosPorFiltro = {
 		camisetas: [
 			{
@@ -99,7 +99,7 @@ function ProductSlider() {
 		<section id="produtos" className="py-16">
 			<div className="max-w-6xl mx-auto px-4 text-center">
 				<h2 className="text-4xl font-semibold text-white mb-4">LOJA AMADO</h2>
-				<p className="text-lg text-slate-300 mb-8">
+				<p className="text-lg text-white mb-8">
 					Orgulho que se veste, apoia e transforma
 				</p>
 
@@ -129,7 +129,7 @@ function ProductSlider() {
 							<img
 								src={produto.imagem}
 								alt={produto.nome}
-								className="w-full h-48 object-cover"
+								className="w-full h-48 object-contain bg-white p-2 rounded-lg"
 							/>
 							<div className="p-4 text-left">
 								<h3 className="text-lg font-semibold text-gray-800">
