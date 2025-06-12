@@ -19,6 +19,7 @@ body {
 	font-family: "Inter", sans-serif;
 	background-color: transparent;
 	color: #111;
+	scroll-behavior: smooth;
 }
 
 #root {

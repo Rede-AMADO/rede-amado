@@ -2,14 +2,16 @@ import logo from "/assets/logo.png";
 import { useCarrinho } from "../components/CarrinhoContext";
 import CarrinhoModal from "../components/CarrinhoModal";
 
-function Header({ onOpenAuth, isLoggedIn, userEmail }) {
+function Header({ onOpenAuth, isLoggedIn, userEmail}) {
 	const { totalItens, setIsCarrinhoOpen } = useCarrinho();
 
 	return (
 		<header className="fixed top-0 w-full bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50">
 			<div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4">
 				<div className="flex items-center">
+				<div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
 					<img src={logo} alt="Logo da Rede" className="h-10 w-auto" />
+				</div>
 					<nav className="px-8">
 						<ul className="flex space-x-8">
 							<li>
@@ -20,14 +22,14 @@ function Header({ onOpenAuth, isLoggedIn, userEmail }) {
 									Notícias
 								</a>
 							</li>
-							<li>
-								<a
-									href="#servicos"
-									className="text-black hover:text-gray-600 transition-colors duration-200 font-medium"
-								>
-									Serviços
-								</a>
-							</li>
+								<li>
+									<a
+										href="#service"
+										className="text-black hover:text-gray-600 transition-colors duration-200 font-medium"
+									>
+										Serviços
+									</a>
+								</li>
 							<li>
 								<a
 									href="#produtos"
