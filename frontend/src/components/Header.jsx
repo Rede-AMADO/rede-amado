@@ -2,7 +2,7 @@ import logo from "/assets/logo.png";
 import { useCarrinho } from "../components/CarrinhoContext";
 import CarrinhoModal from "../components/CarrinhoModal";
 
-function Header({ onOpenAuth, isLoggedIn, userEmail}) {
+function Header({ onOpenAuth, isLoggedIn, userEmail, onOpenContato}) {
 	const { totalItens, setIsCarrinhoOpen } = useCarrinho();
 
 	return (
@@ -49,7 +49,7 @@ function Header({ onOpenAuth, isLoggedIn, userEmail}) {
 				</div>
 
 				<div className="flex items-center space-x-8">
-					<button className="text-black hover:text-gray-600 font-medium">Contate-nos</button>
+					<a href="/contato" ><button className="font-medium" onClick={onOpenContato}>Contate-nos</button></a>
 					{isLoggedIn && (
 						<button 
 							onClick={() => setIsCarrinhoOpen(true)}
