@@ -80,7 +80,7 @@ function NewsSlider() {
 					<button
 						key={index}
 						onClick={() => goToIndex(index)}
-						className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+						className={`w-3.5 h-3.5 rounded-full transition-colors duration-200 hover:-translate-y-1.5 hover:border-1 hover:border-b-orange-500 ${
 							currentIndex === index ? "bg-white" : "bg-gray-400"
 						}`}
 						aria-label={`Ir para notícia ${index + 1}`}

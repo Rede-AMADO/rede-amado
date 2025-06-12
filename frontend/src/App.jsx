@@ -35,7 +35,7 @@ function App() {
 				<Contact isOpen={isContatoOpen} onClose={() => setIsContatoOpen(false)} />
 
 				<main className="flex-1 mt-16 mb-16">
-					<section id="noticias-slider" className="py-12">
+					<section id="noticias-slider" className="">
 						<div className="max-w-6xl mx-auto px-4">
 							<NewsSlider />
 						</div>
