@@ -6,12 +6,10 @@ function Header({ onOpenAuth, isLoggedIn, userEmail}) {
 	const { totalItens, setIsCarrinhoOpen } = useCarrinho();
 
 	return (
-		<header className="fixed top-0 w-full bg-white bg-opacity-90 backdrop-blur-sm shadow-md z-50">
-			<div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4">
+		<header className="fixed top-0 w-full bg-opacity-90 z-50 p-6">
+			<div className="max-w-4xl mx-auto h-16 flex items-center justify-between px-4 bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover rounded-2xl">
 				<div className="flex items-center">
-				<div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
-					<img src={logo} alt="Logo da Rede" className="h-10 w-auto" />
-				</div>
+					<img src={logo} alt="Logo da Rede" className="h-10 w-auto cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}/>
 					<nav className="px-8">
 						<ul className="flex space-x-8">
 							<li>
