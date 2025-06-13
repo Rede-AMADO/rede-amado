@@ -1,9 +1,52 @@
+/* eslint-disable react-refresh/only-export-components */
+import { useState } from "react";
+
 import forum from "../assets/forum-lgbt.png";
 import ser from "../assets/ser-diversidade.png";
 import centrale from "../assets/centrale.png";
 
+export const API_BASE_URL = "http://127.0.0.1:8000";
+
+export async function sendContact(contactData) {
+  const response = await fetch(`${API_BASE_URL}/contato/`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contactData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || "Erro ao enviar contato");
+  }
+
+  return await response.json();
+}
+
 function Contact({ isOpen, onClose }) {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
+  const [feedback, setFeedback] = useState(null);
+  
   if (!isOpen) return null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFeedback(null);
+
+    try {
+      const result = await sendContact({ nome, email, mensagem });
+      setFeedback({ type: "success", text: "Contato salvo com sucesso!" });
+      setNome("");
+      setEmail("");
+      setMensagem("");
+    } catch (err) {
+      setFeedback({ type: "error", text: err.message });
+    }
+  };
 
   return (
     <div className="fixed inset-0 backdrop-blur-xs bg-opacity-50 z-50 flex justify-center items-center transition-opacity" >
@@ -15,7 +58,6 @@ function Contact({ isOpen, onClose }) {
             X
         </button>
 
-        {/* Instituições */}
         <div className="md:w-1/3 space-y-6">
           <h2 className="text-2xl font-bold text-gray-800">Instituições Parceiras</h2>
 
@@ -35,25 +77,30 @@ function Contact({ isOpen, onClose }) {
           </div>
         </div>
 
-        {/* Formulário */}
         <div className="md:w-1/2 space-y-6">
           <h2 className="text-2xl font-bold text-gray-800">Contato</h2>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
               placeholder="Nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
               className="w-full border border-gray-300 rounded px-4 py-2 outline-none"
               required
             />
             <input
               type="email"
               placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded px-4 py-2 outline-none"
               required
             />
             <textarea
               placeholder="Mensagem"
               rows="4"
+              value={mensagem}
+              onChange={(e) => setMensagem(e.target.value)}
               className="w-full border border-gray-300 rounded px-4 py-2 outline-none"
               required
             />
@@ -64,6 +111,15 @@ function Contact({ isOpen, onClose }) {
               Enviar
             </button>
           </form>
+
+          {feedback && (
+            <p className={`mt-2 text-sm ${
+              feedback.type === "success" ? "text-green-600" : "text-red-600"
+            }`}>
+              {feedback.text}
+            </p>
+          )}
+
           <span className="text-center ">
             "Se você não consegue amar a si mesmo, como você vai amar qualquer outra pessoa?” — RuPaul
           </span>

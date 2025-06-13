@@ -12,7 +12,7 @@
   }
   
   .animate-fade-in {
-	animation: fade-in 0.8s ease-out both;
+	animation: fade-in 0.3s ease-out both;
   }
 
 :root {

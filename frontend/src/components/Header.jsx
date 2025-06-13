@@ -1,9 +1,18 @@
+//import { useNavigate } from "react-router-dom";
 import logo from "/assets/logo.png";
 import { useCarrinho } from "../components/CarrinhoContext";
 import CarrinhoModal from "../components/CarrinhoModal";
 
 function Header({ onOpenAuth, isLoggedIn, userEmail, onOpenContato}) {
 	const { totalItens, setIsCarrinhoOpen } = useCarrinho();
+
+	//const navigate = useNavigate();
+	//const handleContatoClick = () => {
+	  // atualiza a URL para /contato
+	//  navigate("/contato", { replace: false });
+	//  // abre o modal
+	//  onOpenContato();
+	//};
 
 	return (
 		<header className="fixed top-0 w-full bg-opacity-90 z-50 p-6">
@@ -49,7 +58,7 @@ function Header({ onOpenAuth, isLoggedIn, userEmail, onOpenContato}) {
 				</div>
 
 				<div className="flex items-center space-x-8">
-					<a href="/contato" ><button className="font-medium" onClick={onOpenContato}>Contate-nos</button></a>
+					<button className="font-medium" onClick={onOpenContato}>Contate-nos</button>
 					{isLoggedIn && (
 						<button 
 							onClick={() => setIsCarrinhoOpen(true)}
