@@ -103,7 +103,7 @@ function ProductSlider() {
 					Orgulho que se veste, apoia e transforma
 				</p>
 
-				<div className="flex justify-center gap-14 flex-wrap mb-10 bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover rounded-2xl">
+				<div className="flex justify-center gap-10 flex-wrap mb-10 p-4 bg-white rounded-2xl">
 					{["todos", "camisetas", "acessorios", "bandeiras"].map((filtro) => (
 						<button
 							key={filtro}
@@ -129,13 +129,13 @@ function ProductSlider() {
 							<img
 								src={produto.imagem}
 								alt={produto.nome}
-								className="w-full h-48 object-contain bg-white p-2 rounded-lg bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover "
+								className="w-full h-48 object-contain bg-white p-2 rounded-lg"
 							/>
 							<div className="p-4 text-left">
 								<h3 className="text-lg font-semibold text-gray-800">
 									{produto.nome}
 								</h3>
-								<p className="text-sm text-gray-600 mb-2">{produto.preco}</p>
+								<p className="text-sm text-black mb-2">{produto.preco}</p>
 								<button 
 									onClick={() => adicionarAoCarrinho(produto)}
 									className="mt-2 w-full py-2 bg-[var(--color-blue)] text-white rounded-full hover:bg-[var(--color-purple)] transition"

@@ -5,7 +5,6 @@ from .routers import atendimento, usuarios, contato
 
 app = FastAPI(title="API - Núcleo AMADO")
 
-# Configuração do CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
