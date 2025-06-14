@@ -5,7 +5,7 @@ import forum from "../assets/forum-lgbt.png";
 import ser from "../assets/ser-diversidade.png";
 import centrale from "../assets/centrale.png";
 
-export const API_BASE_URL = "http://127.0.0.1:8000";
+export const API_BASE_URL = "https://rede-amado.onrender.com";
 
 export async function sendContact(contactData) {
 	const response = await fetch(`${API_BASE_URL}/contato/`, {
