@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from . import models, database
-from .routers import atendimento, usuarios, contato
+from backend import models, database
+from backend.routers import atendimento, usuarios, contato
 
 app = FastAPI(title="API - Núcleo AMADO")
 
