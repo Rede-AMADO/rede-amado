@@ -103,7 +103,7 @@ function ProductSlider() {
 					Orgulho que se veste, apoia e transforma
 				</p>
 
-				<div className="flex justify-center gap-14 flex-wrap mb-10">
+				<div className="flex justify-center gap-14 flex-wrap mb-10 bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover rounded-2xl">
 					{["todos", "camisetas", "acessorios", "bandeiras"].map((filtro) => (
 						<button
 							key={filtro}
@@ -112,7 +112,7 @@ function ProductSlider() {
 								${
 									filtroSelecionado === filtro
 										? "bg-white text-gray-900"
-										: "bg-transparent border-rose-400 text-white hover:bg-white hover:text-gray-900"
+										: "bg-transparent border- text-white hover:bg-white hover:text-gray-900"
 								}`}
 						>
 							{filtro === "todos" ? "Todos" : filtro.charAt(0).toUpperCase() + filtro.slice(1)}
@@ -124,12 +124,12 @@ function ProductSlider() {
 					{produtos.map((produto) => (
 						<div
 							key={produto.id}
-							className="bg-white bg-opacity-90 rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
+							className="bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover bg-opacity-90 rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
 						>
 							<img
 								src={produto.imagem}
 								alt={produto.nome}
-								className="w-full h-48 object-contain bg-white p-2 rounded-lg"
+								className="w-full h-48 object-contain bg-white p-2 rounded-lg bg-[url(/assets/bg-rainbow-header.jpeg)] bg-cover "
 							/>
 							<div className="p-4 text-left">
 								<h3 className="text-lg font-semibold text-gray-800">

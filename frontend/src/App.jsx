@@ -8,11 +8,13 @@ import AboutTeam from "./components/AboutTeam";
 import Services from "./components/Services";
 import Auth from "./components/Auth";
 import CarrinhoModal from "./components/CarrinhoModal";
+import Contact from "./components/Contact";
 
 function App() {
 	const [isAuthOpen, setIsAuthOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [userEmail, setUserEmail] = useState("");
+	const [isContatoOpen, setIsContatoOpen] = useState(false);
 
 	const handleAuthSuccess = (email) => {
 		setIsLoggedIn(true);
@@ -27,10 +29,13 @@ function App() {
 					onOpenAuth={() => setIsAuthOpen(true)}
 					isLoggedIn={isLoggedIn}
 					userEmail={userEmail}
+					onOpenContato={() => setIsContatoOpen(true)}
 				/>
 
+				<Contact isOpen={isContatoOpen} onClose={() => setIsContatoOpen(false)} />
+
 				<main className="flex-1 mt-16 mb-16">
-					<section id="noticias-slider" className="py-12">
+					<section id="noticias-slider" className="">
 						<div className="max-w-6xl mx-auto px-4">
 							<NewsSlider />
 						</div>
