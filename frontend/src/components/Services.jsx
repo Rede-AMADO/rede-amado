@@ -27,7 +27,7 @@ function Servicos({ isLoggedIn, onOpenAuth, userEmail }) {
 		}
 
 		try {
-			const response = await fetch('http://localhost:8000/atendimentos/', {
+			const response = await fetch('https://rede-amado.onrender.com/atendimentos/', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
